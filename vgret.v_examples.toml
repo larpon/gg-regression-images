@@ -21,6 +21,11 @@
 
 [[apps]]
   path = 'examples/gg/mandelbrot.v'
+  [apps.capture.env]
+    # This example needs more time to get a stable result, since the rendering is done asynchronously in threads, that can be slow on the CI
+    # Using just 5 frames, sporadically leads to capturing black screens/CI failures.
+    VGG_STOP_AT_FRAME = '35'
+    VGG_SCREENSHOT_FRAMES = '30'
 
 [[apps]]
   path = 'examples/gg/rectangles.v'
